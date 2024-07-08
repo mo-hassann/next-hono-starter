@@ -1,4 +1,4 @@
-# this is hono drizzle starter code
+# hono authjs and drizzle starter code
 
 ## Getting Started
 
