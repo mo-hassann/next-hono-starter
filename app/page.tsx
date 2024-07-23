@@ -1,4 +1,5 @@
 import SignOutBtn from "@/client/auth/components/sign-out-btn";
+import { Button } from "@/components/ui/button";
 import { currentUser } from "@/lib/auth";
 
 export default async function Home() {
@@ -6,7 +7,9 @@ export default async function Home() {
   return (
     <div>
       {JSON.stringify(user)}
-      <SignOutBtn />
+      <Button asChild>
+        <SignOutBtn>sign out</SignOutBtn>
+      </Button>
     </div>
   );
 }

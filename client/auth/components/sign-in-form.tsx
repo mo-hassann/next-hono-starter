@@ -21,10 +21,7 @@ type props = {
 export default function SignInForm({ defaultValues, onSubmit, disabled }: props) {
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
+    defaultValues,
   });
 
   return (

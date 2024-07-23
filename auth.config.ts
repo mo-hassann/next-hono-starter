@@ -1,5 +1,4 @@
 import { NextAuthConfig } from "next-auth";
-import getUserWithEmailAndPassword from "./client/auth/libs/get-user-with-email-and-password";
 
 import Credentials from "next-auth/providers/credentials";
 import { signInFormSchema } from "./validators";
