@@ -26,7 +26,7 @@ export default function SignInForm({ defaultValues, onSubmit, disabled }: props)
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-6">
         <FormField
           control={form.control}
           name="email"
@@ -54,7 +54,7 @@ export default function SignInForm({ defaultValues, onSubmit, disabled }: props)
           )}
         />
         <Button disabled={disabled} type="submit">
-          Submit
+          Sign In
         </Button>
       </form>
     </Form>

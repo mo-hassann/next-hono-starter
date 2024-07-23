@@ -3,7 +3,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 
 import SignUpForm from "@/client/auth/components/sign-up-form";
 import useSignUp from "@/client/auth/api/use-sign-up";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default function SignUpPage() {
@@ -11,7 +10,7 @@ export default function SignUpPage() {
 
   const isPending = singUpMutation.isPending;
   return (
-    <Card className="w-96 pt-5 pb-8">
+    <Card className="w-96">
       <CardHeader>
         <CardTitle>Sing Up</CardTitle>
         <CardDescription>this is sign up page</CardDescription>
@@ -20,9 +19,12 @@ export default function SignUpPage() {
         <SignUpForm defaultValues={{ name: "", email: "", password: "", confirmPassword: "" }} disabled={isPending} onSubmit={(values) => singUpMutation.mutate(values)} />
       </CardContent>
       <CardFooter>
-        <Button variant={"link"} asChild>
-          <Link href="/sign-in">Already have an account? sign in</Link>
-        </Button>
+        <p className="w-full text-sm text-center">
+          Already have an account?&nbsp;
+          <Link className="hover:underline hover:text-primary" href="/sign-in">
+            sign in
+          </Link>
+        </p>
       </CardFooter>
     </Card>
   );
