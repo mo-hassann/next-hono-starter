@@ -6,6 +6,7 @@ export default async function Home() {
   const user = await currentUser();
   return (
     <div>
+      starting page
       {JSON.stringify(user)}
       <SignOutBtn>
         <Button>sign out</Button>
