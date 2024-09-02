@@ -1,14 +1,16 @@
 "use client";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
-import useSignIn from "@/client/auth/api/use-sign-in";
-import SignInForm from "@/client/auth/components/sign-in-form";
+import useSignIn from "@/query-hooks/auth/use-sign-in";
+import SignInForm from "@/components/auth/sign-in-form";
 import Link from "next/link";
+import SocialAuthSection from "@/components/auth/providers-auth-section";
 
 export default function SignInPage() {
   const singInMutation = useSignIn();
 
-  const isPending = singInMutation.isPending;
+  const { isPending, isSuccess } = singInMutation;
+
   return (
     <Card className="w-96">
       <CardHeader>
@@ -16,15 +18,16 @@ export default function SignInPage() {
         <CardDescription>Enter your email below to login to your account.</CardDescription>
       </CardHeader>
       <CardContent>
-        <SignInForm defaultValues={{ email: "", password: "" }} disabled={isPending} onSubmit={(values) => singInMutation.mutate(values)} />
+        <SignInForm defaultValues={{ email: "", password: "" }} isPending={isPending || isSuccess} onSubmit={(values) => singInMutation.mutate(values)} />
       </CardContent>
-      <CardFooter>
+      <CardFooter className="flex flex-col">
         <p className="w-full text-sm text-center">
           Don&apos;t have an account?&nbsp;
           <Link className="hover:underline hover:text-primary" href="/sign-up">
             sign up
           </Link>
         </p>
+        <SocialAuthSection />
       </CardFooter>
     </Card>
   );

@@ -1,10 +1,10 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import client from "@/server/client";
 import { InferRequestType, InferResponseType } from "hono";
-import { handleErrors } from "@/lib/errors";
+import { handleErrors } from "@/lib/server/errors";
 import { DEFAULT_SIGN_OUT_REDIRECT } from "@/routes";
 
 const $post = client.api.v1["auth"]["sign-out"].$post;
@@ -28,6 +28,7 @@ export default function useSignOut() {
     onSuccess: ({ message }) => {
       toast.success(message);
       router.push(DEFAULT_SIGN_OUT_REDIRECT);
+      router.refresh();
     },
     onError: (error) => {
       console.log(error);

@@ -15,10 +15,10 @@ type FormSchemaType = z.infer<typeof FormSchema>;
 type props = {
   onSubmit: (values: FormSchemaType) => void;
   defaultValues: FormSchemaType;
-  disabled: boolean;
+  isPending: boolean;
 };
 
-export default function SignInForm({ defaultValues, onSubmit, disabled }: props) {
+export default function SignInForm({ defaultValues, onSubmit, isPending }: props) {
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
     defaultValues,
@@ -34,7 +34,7 @@ export default function SignInForm({ defaultValues, onSubmit, disabled }: props)
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input disabled={disabled} placeholder="example@example.com" {...field} />
+                <Input disabled={isPending} placeholder="example@example.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -47,13 +47,13 @@ export default function SignInForm({ defaultValues, onSubmit, disabled }: props)
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input disabled={disabled} type="password" placeholder="example@example.com" {...field} />
+                <Input disabled={isPending} type="password" placeholder="example@example.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button disabled={disabled} type="submit">
+        <Button state={isPending ? "loading" : "default"} type="submit">
           Sign In
         </Button>
       </form>

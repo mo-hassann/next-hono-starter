@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import client from "@/server/client";
 import { InferRequestType, InferResponseType } from "hono";
-import { handleErrors } from "@/lib/errors";
+import { handleErrors } from "@/lib/server/errors";
 import { DEFAULT_SIGN_IN_REDIRECT } from "@/routes";
 
 const $post = client.api.v1["auth"]["sign-in"]["$post"];
@@ -28,6 +28,7 @@ export default function useSignIn() {
     onSuccess: ({ message }) => {
       toast.success(message);
       router.push(DEFAULT_SIGN_IN_REDIRECT);
+      router.refresh();
     },
     onError: (error) => {
       console.log(error);

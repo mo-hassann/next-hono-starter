@@ -8,8 +8,10 @@ import { Hono } from "hono";
 import bcrypt from "bcryptjs";
 import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
-import { generateRandomUserName } from "@/lib";
+import { generateRandomUserName } from "@/lib/auth/user";
 import { isRedirectError } from "next/dist/client/components/redirect";
+import { revalidatePath } from "next/cache";
+import { z } from "zod";
 
 const app = new Hono()
   .post("/sign-up", zValidator("json", signUpFormSchema), async (c) => {
@@ -70,6 +72,7 @@ const app = new Hono()
   .post("/sign-out", async (c) => {
     try {
       await signOut({ redirect: false });
+
       return c.json({ message: "user signed out successfully" });
     } catch (error: any) {
       if (isRedirectError(error)) {

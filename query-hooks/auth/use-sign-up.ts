@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import client from "@/server/client";
 import { InferRequestType, InferResponseType } from "hono";
-import { handleErrors } from "@/lib/errors";
+import { handleErrors } from "@/lib/server/errors";
 
 const $post = client.api.v1["auth"]["sign-up"]["$post"];
 

@@ -4,10 +4,13 @@ import Credentials from "next-auth/providers/credentials";
 import { signInFormSchema } from "./validators";
 
 import bcrypt from "bcryptjs";
-import { getUserWithEmail } from "./client/auth/libs/get-user-with-email";
+import { getUserWithEmail } from "./lib/auth/user";
+
+import Google from "next-auth/providers/google";
 
 export default {
   providers: [
+    Google,
     Credentials({
       credentials: {
         email: {},

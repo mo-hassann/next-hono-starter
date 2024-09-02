@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import useSignOut from "../api/use-sign-out";
+import useSignOut from "../../query-hooks/auth/use-sign-out";
 
 type props = {
   children: React.ReactNode;
@@ -9,9 +9,9 @@ type props = {
 
 export default function SignOutBtn({ children }: props) {
   const signOutMutation = useSignOut();
-  const isPending = signOutMutation.isPending;
+  const { isPending, isSuccess } = signOutMutation;
   return (
-    <Button disabled={isPending} asChild onClick={() => signOutMutation.mutate({})}>
+    <Button state={isPending || isSuccess ? "loading" : "default"} onClick={() => signOutMutation.mutate({})}>
       {children}
     </Button>
   );
