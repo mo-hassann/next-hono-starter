@@ -4,8 +4,8 @@ export async function handleErrors(response: Response) {
   let errorCause;
 
   if (typeof errorResponse === "object") {
-    if ("message" in errorResponse) {
-      errorMessage = errorResponse.message;
+    if ("errorMessage" in errorResponse || "message" in errorResponse) {
+      errorMessage = errorResponse.errorMessage || errorResponse.message;
     }
 
     if ("cause" in errorResponse) {
