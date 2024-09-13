@@ -2,17 +2,6 @@
 
 This is a starter template for building modern web applications using Next.js, Hono.js, Auth.js, TanStack Query, and Drizzle ORM. The project is structured to offer authentication, server-side data management, and type-safe database queries out of the box. I named this stack the "HAND" Stack which stands for (Hono.js, Auth.js, Next.js, Drizzle ORM)
 
-## Table of Contents
-
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Customization](#customization)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## ✨ Features
 
 - **Next.js Framework**: Provides server-side rendering, static site generation, and routing capabilities.
