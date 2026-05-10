@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { DEFAULT_SIGN_IN_REDIRECT, DEFAULT_SIGN_OUT_REDIRECT, apiAuthPrefix, authRoutes, publicRoutes } from "@/routes";
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
+import { auth } from "@/auth.edge";
 
 const app = new Hono();
 
